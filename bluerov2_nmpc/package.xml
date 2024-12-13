@@ -1,50 +1,36 @@
 <?xml version="1.0"?>
-<package format="2">
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
   <name>bluerov2_nmpc</name>
-
   <version>0.0.1</version>
-  <description>ROS Wrapper over AirSim's C++ client library</description>
-
-  <maintainer email="ratneshmadaan@gmail.com">Ratnesh Madaan</maintainer>
-
+  <description>ROS package for nonlinear model predictive controller (NMPC) on the BlueROV2 vehicle</description>
+  <maintainer email="abdelhakim@ece.au.dk">Abdel Hakim Khaled Saad Amin Amer</maintainer>
   <license>MIT</license>
 
-  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
+    
+  <depend>rclcpp</depend>
+  <depend>rclpy</depend>
 
-  <!-- <build_depend>nodelet</build_depend> -->
-  <build_depend>geometry_msgs</build_depend>
-  <build_depend>image_transport</build_depend>
-  <build_depend>message_generation</build_depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>mavros_msgs</depend>
+  <depend>tf2_sensor_msgs</depend>
 
-  <build_depend>mavros_msgs</build_depend>
-  <build_depend>nav_msgs</build_depend>
-  <build_depend>roscpp</build_depend>
-  <build_depend>rospy</build_depend>
-  <build_depend>sensor_msgs</build_depend>
-  <build_depend>std_msgs</build_depend>
-  <build_depend>geographic_msgs</build_depend>
-  <build_depend>geometry_msgs</build_depend>
-  <build_depend>tf2_sensor_msgs</build_depend>
-  <build_depend>tf</build_depend>
-    <build_depend>mavros_msgs</build_depend>
+  <depend>tf2</depend>
+  <depend>joy</depend>
 
-  <!-- <exec_depend>nodelet</exec_depend> -->
-  <exec_depend>geometry_msgs</exec_depend>
-  <exec_depend>image_transport</exec_depend>
+  <buildtool_depend>rosidl_default_generators</buildtool_depend>
+  <exec_depend>rosidl_default_runtime</exec_depend>
+  <member_of_group>rosidl_interface_packages</member_of_group>
 
-  <exec_depend>message_runtime</exec_depend>
-  <exec_depend>nav_msgs</exec_depend>
-  <exec_depend>roscpp</exec_depend>
-  <exec_depend>rospy</exec_depend>
-  <exec_depend>sensor_msgs</exec_depend>
-  <exec_depend>std_msgs</exec_depend>
-  <exec_depend>joy</exec_depend>
-    <exec_depend>joy</exec_depend>
-    <exec_depend>tf</exec_depend>
-        <exec_depend>mavros_msgs</exec_depend>
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
 
-<!--   <export>
-    <nodelet plugin="${prefix}/nodelet_plugins.xml" />
+  <export>
+    <build_type>ament_cmake</build_type>
   </export>
- -->
 </package>

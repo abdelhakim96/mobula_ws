@@ -2,11 +2,10 @@
  * @file   nmpc_bluerov2_2-D.cpp
  * @author Hakim Amer 
  * @date   Jan 2023
- *
-
  */
 
-#include <nmpc_bluerov2_2D.h>
+#include "nmpc_bluerov2_2D.h"
+#include <iostream>
 
 using namespace Eigen;
 
@@ -28,13 +27,13 @@ NMPC_PC::NMPC_PC(struct nmpc_struct_& _nmpc_inp_struct)
     // ACADO NMPC CONTROLLER
     // --------------------
 
-    nmpc_struct.initializeSolver = boost::bind(nmpc_initializeSolver);
-    nmpc_struct.preparationStep = boost::bind(nmpc_preparationStep);
-    nmpc_struct.feedbackStep = boost::bind(nmpc_feedbackStep);
-    nmpc_struct.getKKT = boost::bind(nmpc_getKKT);
-    nmpc_struct.getObjective = boost::bind(nmpc_getObjective);
-    nmpc_struct.printDifferentialVariables = boost::bind(nmpc_printDifferentialVariables);
-    nmpc_struct.printControlVariables = boost::bind(nmpc_printControlVariables);
+    nmpc_struct.initializeSolver = std::bind(nmpc_initializeSolver);
+    nmpc_struct.preparationStep = std::bind(nmpc_preparationStep);
+    nmpc_struct.feedbackStep = std::bind(nmpc_feedbackStep);
+    nmpc_struct.getKKT = std::bind(nmpc_getKKT);
+    nmpc_struct.getObjective = std::bind(nmpc_getObjective);
+    nmpc_struct.printDifferentialVariables = std::bind(nmpc_printDifferentialVariables);
+    nmpc_struct.printControlVariables = std::bind(nmpc_printControlVariables);
 
     nmpc_struct.acado_N = NMPC_N;
     nmpc_struct.acado_NX = NMPC_NX;
@@ -228,7 +227,7 @@ void NMPC_PC::nmpc_core(struct nmpc_struct_& _nmpc_inp_struct,
     // Calculate the entire execution time!
     commandstruct.exe_time = ((double)(clock() - stopwatch)) / CLOCKS_PER_SEC;
 
-    //    ROS_INFO_STREAM("Stoptime outer NMPC: " << ros::Time::now().toSec() - stopwatch.toSec() << " (sec)");
+    //    ROS_INFO_STREAM("Stoptime outer NMPC: " << rclcpp::Time::now().toSec() - stopwatch.toSec() << " (sec)");
 
     /* ------ NMPC_DEBUG ------*/
     //  acadostruct.printDifferentialVariables();

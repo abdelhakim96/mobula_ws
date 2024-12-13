@@ -1,0 +1,13 @@
+bluerov2_nmpc_node:
+    ros__parameters:
+        verbose:                true                         # Parameter to display NMPC messages.-->
+        yaw_control:            true                         # Parameter to let NMPC control yaw angle.-->
+        online_ref_yaw:         true                         # Parameter to utilize online reference for yaw angle. -->
+        use_dist_estimates:     true                         # Parameter to let NMPC use disturbace estimates.-->
+        mocap_topic_part:       "mocap"                      # Parameter to specify part of the topic name for localization data. -->
+        dist_Fx_predInit_topic: "gp_disturb_reg/predInit/x"  # Parameter to specify the topic name for dist_Fx_predInit. -->
+        dist_Fy_predInit_topic: "gp_disturb_reg/predInit/y"  # Parameter to specify the topic name for dist_Fy_predInit. -->
+        dist_Fz_predInit_topic: "gp_disturb_reg/predInit/z"  # Parameter to specify the topic name for dist_Fz_predInit. -->
+        dist_Fx_data_topic:     "gp_disturb_reg/mu/x"        # Parameter to specify the topic name for dist_Fx_data. -->
+        dist_Fy_data_topic:     "gp_disturb_reg/mu/y"        # Parameter to specify the topic name for dist_Fy_data. -->
+        dist_Fz_data_topic:     "gp_disturb_reg/mu/z"        # Parameter to specify the topic name for dist_Fz_data. -->

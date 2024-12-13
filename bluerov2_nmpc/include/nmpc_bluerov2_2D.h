@@ -2,12 +2,16 @@
 #define _NMPC_PC_H
 
 #include <math.h>
-#include <Eigen/Dense>
-#include <tf/tf.h>
 #include <time.h>
+#include <vector>
+
+
+#include "Eigen/Dense"
 
 #include "nmpc_common.h"
 #include "nmpc_auxiliary_functions.h"
+#include "geometry_msgs/msg/wrench.hpp"
+#include "std_msgs/msg/float64.hpp"
 
 extern NMPCworkspace nmpcWorkspace;
 extern NMPCvariables nmpcVariables;
@@ -48,13 +52,13 @@ public:
 
     struct acado_struct
     {
-        boost::function<int(void)> initializeSolver;
-        boost::function<int(void)> preparationStep;
-        boost::function<int(void)> feedbackStep;
-        boost::function<real_t(void)> getKKT;
-        boost::function<real_t(void)> getObjective;
-        boost::function<void(void)> printDifferentialVariables;
-        boost::function<void(void)> printControlVariables;
+        std::function<int(void)> initializeSolver;
+        std::function<int(void)> preparationStep;
+        std::function<int(void)> feedbackStep;
+        std::function<real_t(void)> getKKT;
+        std::function<real_t(void)> getObjective;
+        std::function<void(void)> printDifferentialVariables;
+        std::function<void(void)> printControlVariables;
 
         int acado_N;
         int acado_NX;
@@ -99,11 +103,6 @@ public:
                    std::vector<double>& reftrajectory,
                    struct online_data_struct_& online_data,
                    std::vector<double>& statesmeas);
-
-    void publish_wrench(struct command_struct& commandstruct);
-
-
-    void publish_pred_tarjectory(struct  acado_struct& traj_struct);
 
 protected:
     void set_measurements(struct acado_struct& acadostruct,
